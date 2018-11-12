@@ -2,7 +2,7 @@
 - hosts: localhost
   connection: local
   tasks:
-    - name: Create a resource
+    - name: Delete a resource
       azure_rm_resourcegroup:
         name: table4jbansibletest
         location: ukwest
