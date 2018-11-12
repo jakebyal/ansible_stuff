@@ -5,7 +5,7 @@
     webapp_name: table4jbwebapp
     location: ukwest
   tasks:
-    - name: create rg
+    - name: remove rg
       azure_rm_resourcegroup:
         name: "{{group}}"
         location: "{{location}}"
