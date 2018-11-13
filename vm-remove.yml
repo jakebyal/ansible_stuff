@@ -4,7 +4,7 @@
   tasks:
   - name: Delete resource group
     azure_rm_resourcegroup:
-      name: table4jbansiblerg
+      name: table4jbvmrg
       location: ukwest
       state: absent
       force: yes
