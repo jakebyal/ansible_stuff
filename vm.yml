@@ -2,13 +2,7 @@
   hosts: localhost
   connection: local
   vars:
-    group_name: table4jbansiblerg
-    vnet: table4jbvnet
-    nsg_name: tablejbsggroup
-    subnet: table4jbsubnet
-    nic_name: table4jbthenic
-    publicip: table4jbpublicip
-    vm_name: table4jbansiblevm
+    - vars.yml
   tasks:
   - name: Create resource group
     azure_rm_resourcegroup:
@@ -22,14 +16,14 @@
   - name: Add subnet
     azure_rm_subnet:
       resource_group: "{{ group_name }}"
-      name: "{{ subnet }}"
+      name: "{{ subnet_name }}"
       address_prefix: "10.0.1.0/24"
       virtual_network: "{{ vnet }}"
   - name: Create public IP address
     azure_rm_publicipaddress:
       resource_group: "{{ group_name }}"
       allocation_method: Static
-      name: "{{ publicip }}"
+      name: "{{ public_name }}"
     register: output_ip_address
   - name: Output public IP 
     debug:
@@ -50,13 +44,13 @@
       resource_group: "{{ group_name }}"
       name: "{{ nic_name }}"
       virtual_network: "{{ vnet }}"
-      subnet: "{{ subnet }}"
-      public_ip_name: "{{ publicip }}"
+      subnet: "{{ subnet_name }}"
+      public_ip_name: "{{ public_name }}"
       security_group: "{{ nsg_name }}"
   - name: Create VM
     azure_rm_virtualmachine:
       resource_group: "{{ group_name }}"
-      name: "{{ vm_name }}"
+      name: table4jbvm
       vm_size: Standard_DS1_v2
       admin_username: azureops
       ssh_password_enabled: false
