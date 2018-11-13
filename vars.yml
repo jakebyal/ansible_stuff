@@ -1,0 +1,7 @@
+prefix: table4jb
+group_name: "{{prefix}}vmrg"
+vnet: "{{prefix}}vnet"
+nsg_name: "{{prefix}}secgroup"
+subnet_name: "{{prefix}}subnet"
+nic_name: "{{prefix}}nic"
+public_name: "{{prefix}}public"
