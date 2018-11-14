@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: Arm Deploy
+      azure_rm_deployment:
+        state: present
+        location: ukwest
+        resource_group_name: table4jbwebapprg
+        template_link: 'https://raw.githubusercontent.com/jakebyal/arm/master/template.json'
+        parameters_link: 'https://raw.githubusercontent.com/jakebyal/arm/master/parameters.json'
